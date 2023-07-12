@@ -108,6 +108,7 @@ function App() {
               decimal={token.decimals}
               keypair={privatKey}
               getTokens={getTokens}
+              setStatus={setStatus}
             />
           ))}
         </div>

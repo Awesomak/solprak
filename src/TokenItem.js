@@ -10,6 +10,7 @@ const TokenItem = ({
   decimal,
   keypair,
   getTokens,
+  setStatus,
 }) => {
   const [solToAddress, setSolToAddress] = useState("");
   const [solAmount, setSolAmount] = useState("");
@@ -25,6 +26,7 @@ const TokenItem = ({
   const handleTokenTransfer = async () => {
     if (!solToAddress || !solAmount) return;
     if (+solAmount > amount) return;
+    setStatus(`Sending ${amount} ${symbol}`);
     await sendSplToken(
       keypair,
       solToAddress,
@@ -33,6 +35,7 @@ const TokenItem = ({
       solAmount,
       decimal
     );
+    setStatus("");
     getTokens();
   };
   return (
